@@ -1,0 +1,18 @@
+{  
+   "name":"app1",
+   "author":"Riviere",
+   "license":"BSD",
+   "version":"0.0.1",
+   "description":"Ma premiere app sur Heroku",
+   "main":"server.js",
+   "dependencies":{  
+   
+   },
+   "devDependencies":{  
+
+   },
+   "engines":{  
+      "node":"8.9.1",
+      "npm":"5.5.1"
+   }
+}
