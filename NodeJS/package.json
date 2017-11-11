@@ -1,18 +1,19 @@
-{  
-   "name":"app1",
-   "author":"Riviere",
-   "license":"BSD",
-   "version":"0.0.1",
-   "description":"Ma premiere app sur Heroku",
-   "main":"server.js",
-   "dependencies":{  
-   
+{
+   "name": "ma-todolist",
+   "version": "0.1.0",
+   "license": "BSD",
+   "dependencies": {
+      "body-parser": "~1.10.1",
+      "cookie-session": "~1.1.0",
+      "ejs": "^2.1.4",
+      "express": "^4.11.2"
    },
-   "devDependencies":{  
-
+   "main": "server.js",
+   "author": "Quentin et Theo ",
+   "description": "Un gestionnaire de todolist ultra basique sur Heroku",
+   "engines": {
+      "node": "8.9.1",
+      "npm": "5.5.1"
    },
-   "engines":{  
-      "node":"8.9.1",
-      "npm":"5.5.1"
-   }
+   "devDependencies": {}
 }
