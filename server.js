@@ -1,10 +1,17 @@
-﻿var express = require('express');
+var express = require('express');
 var session = require('cookie-session'); // Charge le middleware de sessions
 var bodyParser = require('body-parser'); // Charge le middleware de gestion des paramètres
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var app = express();
+
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 8080;
+
+
+
 
 /* On utilise les sessions */
 app.use(session({secret: 'todotopsecret'}))
@@ -47,5 +54,7 @@ on en crée une vide sous forme d'array avant la suite */
 .use(function(req, res, next){
     res.redirect('/todo');
 })
-
-.listen(8080);
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
+console.log('Server currently listening...');
