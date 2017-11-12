@@ -6,6 +6,13 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var app = express();
 
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 8080;
+
+
+
+
 /* On utilise les sessions */
 app.use(session({secret: 'todotopsecret'}))
 /* Le paramètre secret envoyé au module de session est obligatoire : il permet de sécuriser les cookies de session */
@@ -47,5 +54,7 @@ on en crée une vide sous forme d'array avant la suite */
 .use(function(req, res, next){
     res.redirect('/todo');
 })
-.listen(8080, '127.0.0.1'); //prod : port 80
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
 console.log('Server currently listening...');
