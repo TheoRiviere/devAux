@@ -12,6 +12,61 @@ var port = process.env.PORT || 8080;
 
 
 
+// Inclusion de la mongodb
+var MongoClient = require("mongodb").MongoClient;
+// Inclusion de Mongoose
+var mongoose = require('mongoose');
+// on se connecte à la db
+mongoose.connect('mongodb://127.0.0.1:27017/todolist', function(err,db) {
+	if (err) { throw err; }
+	console.log('Connecté à la base de données todolist.');
+	new Promise((resolve, reject) => {
+		
+		var todolistSchema = new mongoose.Schema({
+		"nom": String, "prenom" :  String,
+		"todo" : [String]
+		});
+		// Création du Model pour les commentaires
+		var todolistModel = mongoose.model('todolists', todolistSchema);
+		/*var matodolist = new todolistModel({	"nom": "Papi", "prenom" : "Michou",
+						"todo" : ["Dormir", "Dormir"]});
+		
+
+		matodolist.save(function (err) {
+		if (err) { throw err; }
+		console.log('Liste ajoutée avec succès !');
+		});*/
+	  
+	  
+		var query = todolistModel.find(null);
+		query.exec(function (err, lists) {
+		if (err) { throw err; }
+		// On va parcourir le résultat et les afficher joliment
+		var list;
+		for (var i = 0, l = lists.length; i < l; i++) {
+			list = lists[i];
+			console.log('------------------------------');
+			console.log('Nom : ' + list.nom);
+			console.log('Prenom : ' + list.prenom);
+			console.log('Taches : ' + list.todo);
+			console.log('------------------------------');
+			}
+		});
+	}).then(() => mongoose.connection.close()); // Fermeture de la connexion
+	
+    
+});
+
+
+
+
+
+
+
+
+
+
+
 
 /* On utilise les sessions */
 app.use(session({secret: 'todotopsecret'}))
@@ -25,6 +80,10 @@ on en crée une vide sous forme d'array avant la suite */
     }
     next();
 })
+
+
+
+
 
 /* On affiche la todolist et le formulaire */
 
