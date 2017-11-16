@@ -9,14 +9,13 @@
     </head>
 
     <body>
+	
         <h1>Ma todolist</h1>
-
         <ul>
-        <% todolist.forEach(function(todo, index) { %>
-            <li><a href="/todo/supprimer/<%= index %>">✘</a> <%= todo %></li>
-        <% }); %>
+			<% todolist.forEach(function(todo, index) { %>
+				<li><a href="/todo/supprimer/<%= index %>">✘</a> <%= todo %></li>
+			<% }); %>
         </ul>
-		
         <form action="/todo/ajouter/" method="post">
             <p>
                 <label for="newtodo">Que dois-je faire ?</label>
@@ -24,5 +23,32 @@
                 <input type="submit" />
             </p>
         </form>
+		
+		
+		<h1>Enregistrer ma todolist</h1>
+		<form action="/todo/enregistrer/" method="post">
+            <p>
+                <label for="todolistsname">Nom </label>
+                <input type="text" name="todolistsname" id="todolistsname"  />
+			</p>
+			<p>
+				<label for="todolistsfirstname">Prénom </label>
+				<input type="text" name="todolistsfirstname" id="todolistsfirstname"  />
+			</p>
+			<p>
+                <input type="submit" />
+            </p>
+        </form>
+		
+		
+		<h1>D'autres todolist</h1>
+		<p>
+			<ul>
+				<% namelist.forEach(function(name, index) { %>
+					<li><%= name %> <%= firstnamelist[index] %></li>
+					<a href="/todo/listof/<%= idlist[index] %>"> Voir</a>
+				<% }); %>
+			</ul>  
+		</p>
     </body>
 </html>
