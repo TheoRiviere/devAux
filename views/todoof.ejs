@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Ma todolist</title>
+        <style>
+            a {text-decoration: none; color: black;}
+        </style>
+    </head>
+
+    <body>
+        <h1>La todolist de <%= name %> </h1>
+
+        <ul>
+			<% todo.forEach(function(task, index) { %>
+				<li> <%= task %></li>
+			<% }); %>
+        </ul>
+		
+        <a href="/todo/"> Retourner à ma todolist</a>
+    </body>
+</html>
