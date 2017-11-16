@@ -6,7 +6,9 @@
       "body-parser": "~1.10.1",
       "cookie-session": "~1.1.0",
       "ejs": "^2.1.4",
-      "express": "^4.11.2"
+      "express": "^4.11.2",
+      "mongodb": "^2.2.33",
+      "mongoose": "*"
    },
    "main": "server.js",
    "scripts": {
