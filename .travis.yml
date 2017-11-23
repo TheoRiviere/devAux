@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- stable
+deploy:
+  provider: heroku
+  api_key:
+    secure: zHDVUD4FuX5Tw/ehHMUMhUY4xR3wK/iNu0JW0mEKtuPptIK+52mFKbU7wGP/wijGDnluhhpnNprqIOkf4aDH7bYiimwixgc5l8PT7UkSBFavUTF72Oh9BeoLWpRNHGTqwIbqhqXN4KDV2xyaKaT0G/i7rq8mozyCebieEoMaNLJLoHmv0XNP9xCTZRo/TJJh/467kLD0OUEbnHNbI8/tV/3oV29jTLSt5J/ZQf3ZHc9fxrnNzs0lVWzjGZXuum/oAZd1Oila0v2v9mohgP5JiDzNvcrTSw11vrznpKjqrbcY5pLIOOS+YgFeRIno0ThH1zakU/+xtMmwvPcHTvG6N9k22nb6+wmo6HICVXDzWBPlmZS993QXXKqxj5OtFmhCNGbgZO1714GHwbYH2eZCZaFBMldOLUEw9VHT2GCFsQrbY/OpGaiyzFXR1RDv14QNpjnvFQcD3vNMdrMiRCMu0vdj8jEf8xMm5QeN+hkhCGSFVr7K4wfKgl+ZMFTQAtTGl/mVjgm/930PeBt4pzpQrEgqbERbHVBQx/Zf+Jx2RR0Ad1wjKdVJ52aMPy67X/ZPfMIx0HN0Iz4RfK9GIgQ1JJw4X5z8Ih4pfwT6LV5xpNl2p4Oisp1GpY5BpaDgtG4O/ZWmpk4OVeDgD/c0wWk2BtR3eiSVe9xHiH+lm5jO6eA=
+  app: 
+    master: heroku-todolist
+  on:
+    repo: TheoRiviere/devAux
+  
