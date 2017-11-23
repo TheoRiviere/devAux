@@ -18,6 +18,15 @@ var MongoObjectID = require("mongodb").ObjectID;
 // Inclusion de Mongoose
 var mongoose = require('mongoose');
 
+var database = {
+    url: "ds111876.mlab.com:11876",
+    name: "devaux",
+    user: "Riviere",
+    password: "Myloune678!",
+};
+
+var uri = "mongodb://" + database.user + ":" + database.password + "@" + database.url + "/" + database.name;
+
 //Inclusion de asynch pour synchroniser la fermeture de la connection a la db apres les inserts à effectuer
 var async = require("async");
 
@@ -55,7 +64,8 @@ on en crée une vide sous forme d'array avant la suite */
 	var namelist=[];
 	var idlist=[];
 	var firstnamelist=[];
-	mongoose.connect('mongodb://127.0.0.1:27017/todolist', function(err,db) {
+	
+	mongoose.connect(uri, function(err,db) {
 		if (err) { throw err; }
 		
 		console.log('Connecté à la base de données todolist.');
@@ -66,13 +76,15 @@ on en crée une vide sous forme d'array avant la suite */
 			{
 				for (var i = 0, l = lists.length; i < l; i++) 
 				{
+					
 					namelist.push(lists[i].nom);
 					firstnamelist.push(lists[i].prenom);
 					idlist.push(lists[i].id);
 				}
+				res.render('todo.ejs', {namelist : namelist,firstnamelist : firstnamelist, idlist : idlist, todolist: req.session.todolist });
 			}
 		});
-		res.render('todo.ejs', {namelist : namelist,firstnamelist : firstnamelist,idlist : idlist, todolist: req.session.todolist });
+		
 		
 	}).then(() => {	mongoose.connection.close();
 					console.log('Déconnecté de la base de données.');
@@ -86,7 +98,7 @@ on en crée une vide sous forme d'array avant la suite */
 	var name=[];
 	var todo=[];
 	var objToFind     = { _id: new MongoObjectID(req.params.id) };
-	mongoose.connect('mongodb://127.0.0.1:27017/todolist', function(err,db) {
+	mongoose.connect(uri, function(err,db) {
 		if (err) { throw err; }
 		
 		console.log('Connecté à la base de données todolist.');
@@ -100,10 +112,10 @@ on en crée une vide sous forme d'array avant la suite */
 				{
 				todo.push(list.todo[i]);
 				}
+				res.render('todoof.ejs', {	name : name, todo : todo});
 			}
 		});
-		res.render('todoof.ejs', {	name : name,
-									todo : todo});
+		
 		
 	}).then(() => {	mongoose.connection.close();
 					console.log('Déconnecté de la base de données.');
@@ -119,7 +131,7 @@ on en crée une vide sous forme d'array avant la suite */
 	console.log(req.session.todolist);
 	var rowsToSave = [];
    if (req.body.todolistsfirstname != '' && req.body.todolistsname != '' & req.session.todolist!=[] ) {
-        mongoose.connect('mongodb://127.0.0.1:27017/todolist', function(err,db) {
+        mongoose.connect(uri, function(err,db) {
 		if (err) { throw err; }
 		
 		console.log('Connecté à la base de données todolist.');
