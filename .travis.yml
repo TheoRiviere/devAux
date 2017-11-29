@@ -10,3 +10,4 @@ deploy:
   on:
     repo: TheoRiviere/devAux
 
+after_script: npm stop
