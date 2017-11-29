@@ -1,6 +1,5 @@
 var assert = require('assert');
 
-
 describe('page', function() {
     describe('test de rien', function() {
         it('test exemple', function () {
