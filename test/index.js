@@ -1,5 +1,5 @@
 var assert = require('assert');
-var page = require('../server');
+
 
 describe('page', function() {
     describe('test de rien', function() {
