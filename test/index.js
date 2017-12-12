@@ -66,6 +66,3 @@ describe('Nightmare navigation test', function () {
 });
 
 
-  after(function () {
-    server.close();
-  });
