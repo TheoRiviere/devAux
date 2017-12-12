@@ -166,6 +166,36 @@ on en crée une vide sous forme d'array avant la suite */
 })
 
 
+
+
+
+
+/* On supprime la todolist d'id passé en paramètre */
+
+.get('/todo/delete/:id', function(req, res) { 
+	var objToFind     = { _id: new MongoObjectID(req.params.id) };
+	mongoose.connect(uri, function(err,db) {
+		if (err) { throw err; }
+		
+		console.log('Connecté à la base de données todolist.');
+			
+		todolistModel.remove(objToFind, function(err) {
+			if (err) { throw err; }
+			else
+			{
+				res.redirect('/todo');
+			}
+		});
+		
+		
+	}).then(() => {	mongoose.connection.close();
+					console.log('Déconnecté de la base de données.');
+					}); // Fermeture de la connexion
+})
+
+
+
+
 /* On ajoute un élément à la todolist */
 
 .post('/todo/ajouter/', urlencodedParser, function(req, res) {

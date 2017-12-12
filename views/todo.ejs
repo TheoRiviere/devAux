@@ -13,14 +13,14 @@
         <h1>Ma todolist</h1>
         <ul>
 			<% todolist.forEach(function(todo, index) { %>
-				<li><a href="/todo/supprimer/<%= index %>">✘</a> <%= todo %></li>
+				<li class="todo"><a href="/todo/supprimer/<%= index %>">✘</a> <%= todo %></li>
 			<% }); %>
         </ul>
         <form action="/todo/ajouter/" method="post">
             <p>
                 <label for="newtodo">Que dois-je faire ?</label>
                 <input type="text" name="newtodo" id="newtodo" autofocus />
-                <input type="submit" />
+                <input type="submit" name="todosubmit" id="todosubmit"/>
             </p>
         </form>
 		
@@ -36,17 +36,19 @@
 				<input type="text" name="todolistsfirstname" id="todolistsfirstname"  />
 			</p>
 			<p>
-                <input type="submit" />
+                <input type="submit" name="listsubmit" id="listsubmit" />
             </p>
         </form>
 		
 		
 		<h1>D'autres todolist</h1>
+		
 		<p>
 			<ul>
 				<% namelist.forEach(function(name, index) { %>
-					<li><%= name %> <%= firstnamelist[index] %></li>
+					<li class= <%= name %>> <%= name %> <%= firstnamelist[index] %> </li>
 					<a href="/todo/listof/<%= idlist[index] %>"> Voir</a>
+					<a class= <%= name %> href="/todo/delete/<%= idlist[index] %>"> Supprimer</a>
 				<% }); %>
 			</ul>  
 		</p>
