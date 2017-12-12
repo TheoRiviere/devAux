@@ -1,6 +1,7 @@
 var path = require('path');
 var Nightmare = require('nightmare');
 var should = require('chai').should();
+var page = require('../server');
 describe('Nightmare navigation test', function () {
     this.timeout(15000); // Set timeout to 15 seconds, instead of the original 2 seconds
 
