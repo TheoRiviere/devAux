@@ -48,8 +48,9 @@ describe('Nightmare navigation test', function () {
 			const expected = 0;
             new Nightmare({show: true})
                 .goto(url)
+				.wait(3000)
 				.click('a[class="Smith"]')
-				.wait(6000)
+				.wait(3000)
                 .evaluate(function () {
 					console.log(">>>>>>>>>"+document.querySelectorAll('li.Smith').length);
                     return document.querySelectorAll('li.Smith').length;
