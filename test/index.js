@@ -29,11 +29,11 @@ describe('Nightmare navigation test', function () {
                 .goto(url)
 				.type('input[name="newtodo"]', "Avancer le projet")
 				.click('input[name="todosubmit"]')
-				.wait(1000)
+				.wait(3000)
 				.type('input[name="todolistsname"]', "Smith")
 				.type('input[name="todolistsfirstname"]', "John")
 				.click('input[name="listsubmit"]')
-				.wait(1000)
+				.wait(3000)
                 .evaluate(function () {
 					console.log(">>>>>>>>>"+document.querySelectorAll('li.Smith').length);
                     return document.querySelectorAll('li.Smith').length;
@@ -49,7 +49,7 @@ describe('Nightmare navigation test', function () {
             new Nightmare({show: true})
                 .goto(url)
 				.click('a[class="Smith"]')
-				.wait(1000)
+				.wait(6000)
                 .evaluate(function () {
 					console.log(">>>>>>>>>"+document.querySelectorAll('li.Smith').length);
                     return document.querySelectorAll('li.Smith').length;
